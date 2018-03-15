@@ -1,0 +1,76 @@
+<html>
+	<head>
+	<meta charset="utf-8" />
+	<title>Ombrocessing</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		bgColors = ["#1B495B", "#8C959C", "#B5C8C6", "#696A6E", "#57565B", "#925C4F", "#A5806A", "#FCD79E", "#F9B17B","#F6BFC7","#F077A0", "#8061AF", "#858AC7", "#C89FCC", "#3EA96B", "#0A6A4B", "#63A870", "#7DCAB5"];
+
+
+		$(document).ready( function()
+		{	
+			$("body").css("background-color", bgColors[ parseInt( Math.random()*bgColors.length )] );
+		});
+
+
+		$(window).on('load', loaded).on('resize', resize);
+
+		function loaded()
+		{
+			$('#logo').fadeIn("slow").on('mouseover', logoOver).on('mouseout', logoOut).on('mousemove', logoMove);
+			resize();
+		}
+
+		function resize()
+		{
+			let w = $(window).width();
+			let h = $(window).height();
+			if (w<680)
+			{
+				$('#logo').addClass("resized");
+				$('#logo img').width( w );
+			}
+			else
+			{
+				$('#logo img').width( 680 );
+				$('#logo').removeClass("resized");
+			}
+
+			$('#logo').offset({left : (w-$('#logo').width())/2, top : (h-$('#logo').height())/2})
+			$('#grid').offset({top:$('#logo').offset().top})
+		}
+
+		function logoOver(e)
+		{
+			if ($('#logo').hasClass("resized")) 
+				return;
+
+			$('#grid').fadeIn("fast").offset( {left: e.pageX, top: $('#logo').offset().top} );
+		}
+
+		function logoOut()
+		{
+			$('#grid').fadeOut("fast");
+		}
+
+		function logoMove(e)
+		{
+			if ($('#logo').hasClass("resized")) 
+				return;
+			$('#grid').offset( {left: e.pageX - $('#grid img').width()/2 } );
+		}
+
+	</script>
+	</head>
+	<body>
+		<div id="main">
+			<div id="logo">
+				<img src="180312_151120_export_5_frames.png" />
+			</div>
+			<div id="grid">
+				<img src="grid_5_frames.png" />
+			</div>
+		</div>
+	</body>
+</html>

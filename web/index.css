@@ -1,0 +1,23 @@
+*
+{
+	margin:		0;
+	padding:	0;
+}
+
+#main
+{
+	width:		100%;
+	height:		100%;
+}
+
+#logo, #grid
+{
+	position:	absolute;
+	display:	none;
+}
+
+#grid
+{
+	pointer-events:	none;	
+}
+
