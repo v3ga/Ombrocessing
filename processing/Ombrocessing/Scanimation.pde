@@ -384,6 +384,24 @@ class Scanimation
   }
 
   // ------------------------------------------------------
+  void exportTransparent()
+  {
+    String time = timestamp();    
+    compositionFrame.loadPixels();
+    PImage img = createImage(compositionFrame.width, compositionFrame.height, ARGB);
+    img.loadPixels();
+    color cf;
+    for (int i=0;i<img.width*img.height;i++)
+    {
+      cf = compositionFrame.pixels[i];
+      img.pixels[i] = color( red(cf), green(cf), blue(cf), red(cf) == 0 ? 255 : 0 );
+    }
+    img.save("exports/"+time+"_export_"+nbFrames+"_frames.png");
+    //compositionFrame.save("exports/"+time+"_export_"+nbFrames+"_frames.png");
+  }
+
+
+  // ------------------------------------------------------
   void exportGrid()
   {
     String time = timestamp();    
