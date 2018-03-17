@@ -18,4 +18,10 @@ class Animation
   void draw(PGraphics pg, float t)
   {
   }
+
+  void createControls(float y)
+  {
+      
+  }
+
 };

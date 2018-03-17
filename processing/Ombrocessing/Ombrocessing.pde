@@ -24,6 +24,7 @@
 import processing.pdf.*;
 import geomerative.*;
 import controlP5.*;
+import java.util.*;
 
 // ------------------------------------------------------
 Scanimation scanimation;
@@ -70,8 +71,8 @@ void setup()
 
   // Logo
   logo = loadImage("images/logo.png");
-  font15 = loadFont("fonts/Asap-Bold-15.vlw");
-  font30 = loadFont("fonts/Asap-Bold-30.vlw");
+  font15 = loadFont("fonts/OpenSans-Regular-15.vlw");
+  font30 = loadFont("fonts/OpenSans-Regular-30.vlw");
 
 
   // Animation

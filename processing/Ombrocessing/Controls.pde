@@ -12,6 +12,9 @@ class ControlFrame extends PApplet
   float wLogo = 0, hLogo = 0;
   float yControls=0;
   ControlFont fontLabel;
+  ScrollableList listAnimations;
+
+  float hAfterLastControls = 45;
 
   public ControlFrame(PApplet _parent, int _w, int _h, String _name) 
   {
@@ -47,7 +50,7 @@ class ControlFrame extends PApplet
       .setText("DESSIN")
       .setFont( fontLabel ).setColorValue(color(0))
       .setPosition(0, yControls);
-    yControls += 25;
+    yControls += 45;
 
     radioRender =  cp5.addRadioButton("radioRender")
       .setPosition(5, yControls)
@@ -58,13 +61,13 @@ class ControlFrame extends PApplet
       .addItem("composition avec masque", 1)
       .addItem("animation", 2);
 
-    yControls += 3*20 + 10;
+    yControls += 3*20 + 35;
 
     lblExport = cp5.addTextlabel("Export")
       .setText("EXPORTATION")
       .setFont( fontLabel ).setColorValue(color(0))
       .setPosition(0, yControls);
-    yControls += 25;
+    yControls += 45;
 
     cp5.addButton("btnExport")
       .setLabel("Exporter en PDF")
@@ -75,15 +78,13 @@ class ControlFrame extends PApplet
       .setLabel("Exporter en image")
       .setPosition(5+200+5, yControls)
       .setSize(200, 20);
-
-    
-    yControls += 25;
+    yControls += 45 ;
 
     lblParams = cp5.addTextlabel("Params")
       .setText("PARAMÈTRES")
       .setFont( fontLabel ).setColorValue(color(0))
       .setPosition(0, yControls);
-    yControls += 25;
+    yControls += 45;
 
     radioRender.activate(mode);
 
@@ -95,13 +96,19 @@ class ControlFrame extends PApplet
       .setSize(200, 20)
       .setRange(0.05, 0.5)
       .setValue(0.2);
-  }
+
+    yControls += 25;
+
+    anim.createControls(yControls);
+
+
+    }
 
   void draw() 
   {
     background( unhex(ombroColors[10]) );
     image(logo, 0, yLogo, wLogo, hLogo);
-    stroke(0);
+    stroke(0,100);
     drawLabelFilet(lblDessin);
     drawLabelFilet(lblExport);
     drawLabelFilet(lblParams);
@@ -109,7 +116,7 @@ class ControlFrame extends PApplet
 
   void drawLabelFilet(Textlabel lbl)
   {
-    line( 5, lbl.getPosition()[1]+20, this.width-5, lbl.getPosition()[1]+20);
+    line( 5, lbl.getPosition()[1]+30, this.width-5, lbl.getPosition()[1]+30);
   }
 
 
@@ -118,13 +125,6 @@ class ControlFrame extends PApplet
     if (theEvent.isFrom(radioRender)) 
     {
       mode = int(theEvent.getValue());
-
-      /*      print("got an event from "+theEvent.getName()+"\t");
-       for (int i=0; i<theEvent.getGroup().getArrayValue().length; i++) {
-       print(int(theEvent.getGroup().getArrayValue()[i]));
-       
-       }
-       */
     }
   }
 }
