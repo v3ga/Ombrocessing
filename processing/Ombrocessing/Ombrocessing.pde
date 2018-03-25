@@ -1,6 +1,7 @@
 
 /*
   Ombrocessing
+  www.ombrocessing.org
  
  —
  Developped and tested on : 
@@ -21,10 +22,11 @@
  */
 
 // ------------------------------------------------------
+import java.util.*;
+import java.lang.reflect.*;
 import processing.pdf.*;
 import geomerative.*;
 import controlP5.*;
-import java.util.*;
 
 // ------------------------------------------------------
 Scanimation scanimation;
@@ -34,7 +36,7 @@ int drawFrameIndex = 0;
 boolean drawFrameMasked = false;
 
 // ------------------------------------------------------
-AnimationLogo animLogo;
+AnimationScanimation animScanimation;
 Animation anim;
 
 // ------------------------------------------------------
@@ -66,21 +68,15 @@ void settings()
 void setup()
 {
   initLibraries();
+  initMedias();
+
   // Create the Scanimation instance, which will be made of 6 frames
   scanimation = new Scanimation(this, ps, 5);
 
-  // Logo
-  logo = loadImage("images/logo.png");
-  font15 = loadFont("fonts/OpenSans-Regular-15.vlw");
-  font30 = loadFont("fonts/OpenSans-Regular-30.vlw");
-
-
   // Animation
-  animLogo = new AnimationLogo(scanimation);
-  animLogo.setup();
-  anim = animLogo;
-
-
+  animScanimation = new AnimationScanimation(scanimation);
+  animScanimation.setup();
+  anim = animScanimation;
 
   // Compose the final frame (this is calling "drawScanimationFrame" for each frame)
   scanimation.composeFinalFrame();
@@ -88,7 +84,6 @@ void setup()
   scanimation.setTimerPeriod(0.5);
   // Set background for export
   scanimation.setExportBackground(false);
-
 
   // Interface
   cf = new ControlFrame(this, 500, 600, "Controls");
@@ -132,7 +127,7 @@ void drawScanimationFrame(PGraphics pg, int frame, int nbFrames)
 {
   if (anim != null)
   {
-    anim.draw(pg, float(frame)/float(nbFrames));
+      anim.draw(pg, frame, nbFrames);
   }
 
   /*    pg.translate(pg.width/2, pg.height/2);

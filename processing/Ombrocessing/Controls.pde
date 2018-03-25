@@ -39,16 +39,21 @@ class ControlFrame extends PApplet
 
     wLogo = this.width;
     hLogo = wLogo / (float)logo.width * logo.height;
-    yControls = yLogo+hLogo+10;
+    yControls = yLogo+hLogo+50;
 
     fontLabel = new ControlFont(font30, 20);
 
     cp5 = new ControlP5(this, new ControlFont(font15, 13));
-    cp5.setColorCaptionLabel( color(0) );
+    cp5.setColorCaptionLabel( color(#4c5575) );
+//    cp5.setColorLabel( color(255) );
+    cp5.setColorActive(color(#98aab9));
+    cp5.setColorForeground(color(#4c5575));
+//    cp5.setColorBackground(color(#e1a48c));
+    
 
     lblDessin = cp5.addTextlabel("Dessin")
       .setText("DESSIN")
-      .setFont( fontLabel ).setColorValue(color(0))
+      .setFont( fontLabel ).setColorValue(color(#4c5575))
       .setPosition(0, yControls);
     yControls += 45;
 
@@ -65,24 +70,26 @@ class ControlFrame extends PApplet
 
     lblExport = cp5.addTextlabel("Export")
       .setText("EXPORTATION")
-      .setFont( fontLabel ).setColorValue(color(0))
+      .setFont( fontLabel ).setColorValue(color(#4c5575))
       .setPosition(0, yControls);
     yControls += 45;
 
     cp5.addButton("btnExport")
       .setLabel("Exporter en PDF")
       .setPosition(5, yControls)
+      .setColorLabel(color(255))
       .setSize(200, 20);
 
     cp5.addButton("btnExportImg")
       .setLabel("Exporter en image")
       .setPosition(5+200+5, yControls)
+      .setColorLabel(color(255))
       .setSize(200, 20);
     yControls += 45 ;
 
     lblParams = cp5.addTextlabel("Params")
       .setText("PARAMÈTRES")
-      .setFont( fontLabel ).setColorValue(color(0))
+      .setFont( fontLabel ).setColorValue(color(#4c5575))
       .setPosition(0, yControls);
     yControls += 45;
 
@@ -106,9 +113,10 @@ class ControlFrame extends PApplet
 
   void draw() 
   {
-    background( unhex(ombroColors[10]) );
+    background( /*unhex(ombroColors[0])*/color(#dbe9f4) );
     image(logo, 0, yLogo, wLogo, hLogo);
-    stroke(0,100);
+
+    stroke(#4c5575,100);
     drawLabelFilet(lblDessin);
     drawLabelFilet(lblExport);
     drawLabelFilet(lblParams);
@@ -127,4 +135,18 @@ class ControlFrame extends PApplet
       mode = int(theEvent.getValue());
     }
   }
+  
+  void btnExport()
+  {
+    // println("Export");
+    scanimation.exportPDF();
+  }
+
+  void btnExportImg()
+  {
+    // println("Export");
+    scanimation.exportPDF();
+  }
+
+
 }
