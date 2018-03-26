@@ -37,6 +37,8 @@ boolean drawFrameMasked = false;
 
 // ------------------------------------------------------
 AnimationScanimation animScanimation;
+AnimationGrid animGrid;
+AnimationLogo animLogo;
 Animation anim;
 
 // ------------------------------------------------------
@@ -76,7 +78,15 @@ void setup()
   // Animation
   animScanimation = new AnimationScanimation(scanimation);
   animScanimation.setup();
-  anim = animScanimation;
+  
+  animGrid = new AnimationGrid(scanimation);
+  animGrid.setup();
+  
+  animLogo = new AnimationLogo(scanimation);
+  animLogo.setup();
+ 
+  
+  anim = animGrid;
 
   // Compose the final frame (this is calling "drawScanimationFrame" for each frame)
   scanimation.composeFinalFrame();
@@ -86,7 +96,7 @@ void setup()
   scanimation.setExportBackground(false);
 
   // Interface
-  cf = new ControlFrame(this, 500, 600, "Controls");
+  cf = new ControlFrame(this, 500, height, "Controls");
   surface.setLocation(500, 10);
 }
 

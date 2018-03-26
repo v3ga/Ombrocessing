@@ -14,5 +14,4 @@ class AnimationScanimation extends Animation
   void draw(PGraphics pg, float t)
   {
   }
-
 }
