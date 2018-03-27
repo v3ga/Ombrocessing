@@ -33,6 +33,7 @@ AnimationGrid animGrid;
 AnimationRing animRing;
 AnimationRingMultiple animRingMultiple;
 AnimationLogo animLogo;
+AnimationTypo animTypo;
 Animation anim;
 
 // ------------------------------------------------------
@@ -69,11 +70,13 @@ void setup()
   animRingMultiple = new AnimationRingMultiple(scanimation);
   animRingMultiple.setup();
   
+  animTypo = new AnimationTypo(scanimation);
+  animTypo.setup();
 
   animLogo = new AnimationLogo(scanimation);
   animLogo.setup();
 
-  anim = animGrid;
+  anim = animTypo;
 
   // Compose the final frame (this is calling "drawScanimationFrame" for each frame)
   scanimation.composeFinalFrame();
