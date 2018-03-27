@@ -24,6 +24,11 @@ class AnimationScanimation extends Animation
     pg.rect(pg.width/2, pg.height/2, 200 + t*amplitude, 200);
   }
 
+
+
+
+
+
   // Crée les controles
   void createControls(ControlP5 cp5, float y)
   {
