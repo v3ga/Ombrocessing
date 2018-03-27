@@ -1,7 +1,6 @@
-
 /*
   Ombrocessing
-  www.ombrocessing.org
+ www.ombrocessing.org
  
  —
  Developped and tested on : 
@@ -12,21 +11,14 @@
  www.v3ga.net
  www.2roqs.com
  
- —
- Keyboard : 
- - 'i' draws the composition
- - 'c' draws the composition with mask
- - 'a' draws animation frames
- - 'e' exports composition (with timestamp) + mask to .pdf format
- 
  */
 
 // ------------------------------------------------------
-import java.util.*;
-import java.lang.reflect.*;
-import processing.pdf.*;
-import geomerative.*;
-import controlP5.*;
+// Parameters
+// float periodChangeFrame = 0.25f;
+PaperSize psNormal = new PaperSize(240, 175, new float[]{10.0});
+PaperSize psBordsPerdus = new PaperSize(250, 190, new float[]{0.0});
+PaperSize ps = psNormal;
 
 // ------------------------------------------------------
 Scanimation scanimation;
@@ -38,6 +30,8 @@ boolean drawFrameMasked = false;
 // ------------------------------------------------------
 AnimationScanimation animScanimation;
 AnimationGrid animGrid;
+AnimationRing animRing;
+AnimationRingMultiple animRingMultiple;
 AnimationLogo animLogo;
 Animation anim;
 
@@ -45,25 +39,12 @@ Animation anim;
 // Colors
 String[] ombroColors = {"1B495B", "8C959C", "B5C8C6", "696A6E", "57565B", "925C4F", "A5806A", "FCD79E", "F9B17B", "F6BFC7", "F077A0", "8061AF", "858AC7", "C89FCC", "3EA96B", "0A6A4B", "63A870", "7DCAB5"};
 PImage logo;
-PFont font15,font30;
-
-// ------------------------------------------------------
-// Parameters
-// float periodChangeFrame = 0.25f;
-PaperSize ps1 = new PaperSize(230, 175, new float[]{35.0, 35.0, 35.0, 35.0});
-PaperSize ps2 = new PaperSize(210, 297, new float[]{10.0, 10.0, 10.0, 10.0});
-//PaperSize ps3 = new PaperSize(180, 240, new float[]{10.0}); // Test Emeline
-PaperSize ps3 = new PaperSize(240, 180, new float[]{15.0}); // Test Emeline
-PaperSize ps = ps3;
+PFont font15, font30;
 
 // ------------------------------------------------------
 void settings()
 {
   ps.doSize();
-  /*
-  println(displayDensity());
-   println( Utils.toMM(1) );
-   */
 }
 
 // ------------------------------------------------------
@@ -78,14 +59,20 @@ void setup()
   // Animation
   animScanimation = new AnimationScanimation(scanimation);
   animScanimation.setup();
-  
+
   animGrid = new AnimationGrid(scanimation);
   animGrid.setup();
+
+  animRing = new AnimationRing(scanimation);
+  animRing.setup();
+
+  animRingMultiple = new AnimationRingMultiple(scanimation);
+  animRingMultiple.setup();
   
+
   animLogo = new AnimationLogo(scanimation);
   animLogo.setup();
- 
-  
+
   anim = animGrid;
 
   // Compose the final frame (this is calling "drawScanimationFrame" for each frame)
@@ -137,36 +124,9 @@ void drawScanimationFrame(PGraphics pg, int frame, int nbFrames)
 {
   if (anim != null)
   {
-      anim.draw(pg, frame, nbFrames);
+    anim.draw(pg, frame, nbFrames);
   }
-
-  /*    pg.translate(pg.width/2, pg.height/2);
-   pg.rotate( map(frame, 0, nbFrames, 0, radians(90)) );
-   pg.noStroke();
-   pg.rectMode(CENTER);
-   pg.rect(0,0,400,100);
-   pg.ellipse(30,60,100,100);
-   
-   pg.stroke(0);
-   pg.strokeWeight(1);
-   pg.line(pg.width/2,0,pg.width/2,pg.height);
-   */
-  //    println( frame + " / " + nbFrames );
-  /*
-    pg.translate(pg.width/2, pg.height/2);
-   pg.noStroke();
-   pg.rectMode(CENTER);
-   pg.rotate(frame * PI / (nbFrames));
-   pg.rect(0,0,pg.width*0.98,100);
-   */
-  /*    float r = 0.5*pg.width*0.8;
-   pg.beginShape();
-   for (float angle=0; angle<TWO_PI; angle = angle+TWO_PI/3)
-   pg.vertex( r*cos(angle), r*sin(angle) );
-   pg.endShape();
-   */
 }
-
 
 // ------------------------------------------------------
 void keyPressed()

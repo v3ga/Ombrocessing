@@ -24,7 +24,7 @@ class Animation
     this.draw(pg, float(frame)/float(nbFrames));
   }  
 
-  void createControls(float y)
+  void createControls(ControlP5 cp5, float y)
   {
   }
 };
@@ -103,46 +103,5 @@ class AnimationLogo extends Animation
     pg.stroke(0);
 //    pg.rect(formOmbrocessing.getX()+pg.width/2,formOmbrocessing.getY()+pg.height/2,formOmbrocessing.getWidth(),formOmbrocessing.getHeight());
 
-  }
-}
-
-class AnimationGrid extends Animation
-{
-  Grid grid;
-
-  AnimationGrid(Scanimation scan)
-  {
-    super(scan, "Julien", "Grid"); // à changer
-  }
-
-  // Initialisation de l'animation
-  void setup()
-  {
-    grid = new Grid(scan.frameWidth, scan.frameHeight, 8, 8)
-    {
-      @Override
-        public void draw(PGraphics pg, float t, int i, int j, float stepx, float stepy)
-      {
-        pg.rectMode(CENTER);
-        pg.pushMatrix();
-        pg.translate(0.5*stepx, 0.5*stepy);
-        pg.rotate( t*PI/2 );
-//        pg.rotate(  map( t,0,1,0,PI ) );
-        //float size = map(cos( (float(i)/7+0*(float)j/15)*TWO_PI + t * TWO_PI), -1, 1, stepx/2, 2*stepx) ;
-        float f = 0.8;
-        float size =   f * min(stepx, stepy); 
-        pg.fill(0,0,0, 255);
-        pg.noStroke();
-        pg.rect(0, 0, size, size);
-        pg.popMatrix();
-      }
-    };
-
-  }
-
-  // Dessins de l'animation
-  void draw(PGraphics pg, float t)
-  {
-    grid.draw(pg,t);
   }
 }

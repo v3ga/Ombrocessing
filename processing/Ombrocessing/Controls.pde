@@ -30,7 +30,6 @@ class ControlFrame extends PApplet
   public void settings() 
   {
     size(w, h);
-    pixelDensity(2);
   }
 
   public void setup() 
@@ -106,7 +105,7 @@ class ControlFrame extends PApplet
 
     yControls += 25;
 
-    anim.createControls(yControls);
+    anim.createControls(cp5,yControls);
 
 
     }
@@ -145,7 +144,7 @@ class ControlFrame extends PApplet
   void btnExportImg()
   {
     // println("Export");
-    scanimation.exportPDF();
+    scanimation.export();
   }
 
 
