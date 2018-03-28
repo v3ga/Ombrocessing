@@ -101,7 +101,7 @@ class PaperSize
 
   void doSize()
   {
-    size( Utils.toPixels(this.wdocmm), Utils.toPixels(this.hdocmm)  );  
+    size( Utils.toPixels(this.wdocmm), Utils.toPixels(this.hdocmm),P3D  );  
   }
 
 }

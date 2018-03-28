@@ -78,7 +78,7 @@ class Scanimation
     listFrames = new ArrayList<PGraphics>();
     listMaskedFrames = new ArrayList<PGraphics>(); 
     for (int i=0;i<nbFrames;i++) {
-      listFrames.add( createGraphics(this.frameWidth, this.frameHeight) );
+      listFrames.add( createGraphics(this.frameWidth, this.frameHeight,P3D) );
       listMaskedFrames.add( createGraphics(this.frameWidth, this.frameHeight) );
     }
 

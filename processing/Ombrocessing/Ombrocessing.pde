@@ -18,7 +18,7 @@
 // float periodChangeFrame = 0.25f;
 PaperSize psNormal = new PaperSize(240, 175, new float[]{10.0});
 PaperSize psBordsPerdus = new PaperSize(250, 190, new float[]{0.0});
-PaperSize ps = psNormal;
+PaperSize ps = psBordsPerdus;
 
 // ------------------------------------------------------
 Scanimation scanimation;
@@ -34,6 +34,7 @@ AnimationRing animRing;
 AnimationRingMultiple animRingMultiple;
 AnimationLogo animLogo;
 AnimationTypo animTypo;
+AnimationPyramids animPyramids;
 Animation anim;
 
 // ------------------------------------------------------
@@ -76,7 +77,10 @@ void setup()
   animLogo = new AnimationLogo(scanimation);
   animLogo.setup();
 
-  anim = animTypo;
+  animPyramids = new AnimationPyramids(scanimation);
+  animPyramids.setup();
+
+  anim = animPyramids;
 
   // Compose the final frame (this is calling "drawScanimationFrame" for each frame)
   scanimation.composeFinalFrame();
