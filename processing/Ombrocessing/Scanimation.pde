@@ -336,7 +336,7 @@ class Scanimation
           }
           else
           {
-            if (r<=5) {
+            if (r<=100) {
               isBeginLine = true;
               jbegin = j;
               println("colonne begin "+i+";j="+j);

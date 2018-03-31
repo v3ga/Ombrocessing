@@ -3,6 +3,7 @@ class Animation
   Scanimation scan;
   String name="";
   String author="";
+  int mode = 0;
   
   Animation(Scanimation scan, String name, String author)
   {
@@ -10,6 +11,14 @@ class Animation
     this.name = name;
     this.author = author;
   }
+  
+  Animation(Scanimation scan, String name, String author, int mode)
+  {
+    this.mode = mode;
+    this.scan = scan;
+    this.name = name;
+    this.author = author;
+  }  
 
   void setup()
   {
@@ -38,11 +47,11 @@ class AnimationLogo extends Animation
   float sOmbro = 1.0, sCessing = 1.0;
   float s = 1.0;
   
-  int mode = 3;
+  int mode = 1;
   
   AnimationLogo(Scanimation scan)
   {
-    super(scan, "Julien", "logo");
+    super(scan, "Julien", "Logo Ombrocessing");
   }
 
   void setup()

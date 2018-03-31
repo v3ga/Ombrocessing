@@ -7,7 +7,7 @@ class ControlFrame extends PApplet
   ControlP5 cp5;
   RadioButton radioRender;
   Scanimation scanimation;
-  Textlabel lblDessin, lblExport, lblParams;
+  Textlabel lblDessin, lblExport, lblParams, lblAnimations;
   float yLogo = 20;
   float wLogo = 0, hLogo = 0;
   float yControls=0;
@@ -103,7 +103,18 @@ class ControlFrame extends PApplet
       .setRange(0.05, 0.5)
       .setValue(0.2);
 
-    yControls += 25;
+    yControls += 45;
+
+    lblAnimations = cp5.addTextlabel("Anims")
+      .setText("ANIMATIONS")
+      .setFont( fontLabel ).setColorValue(color(#4c5575))
+      .setPosition(0, yControls);
+    yControls += 45;
+
+    cp5.addTextlabel("AnimsInfo")
+      .setText("Utilisez les flèches droite et gauche pour changer d'animation.")
+      .setColorValue(color(#4c5575))
+      .setPosition(0, yControls);
 
     anim.createControls(cp5,yControls);
 
@@ -119,6 +130,7 @@ class ControlFrame extends PApplet
     drawLabelFilet(lblDessin);
     drawLabelFilet(lblExport);
     drawLabelFilet(lblParams);
+    drawLabelFilet(lblAnimations);
   }
 
   void drawLabelFilet(Textlabel lbl)

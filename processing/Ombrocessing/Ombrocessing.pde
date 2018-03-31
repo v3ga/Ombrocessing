@@ -28,14 +28,17 @@ int drawFrameIndex = 0;
 boolean drawFrameMasked = false;
 
 // ------------------------------------------------------
+ArrayList<Animation> anims = new ArrayList<Animation>();
+Animation anim;
+
+/*
 AnimationScanimation animScanimation;
 AnimationGrid animGrid;
 AnimationRing animRing;
 AnimationRingMultiple animRingMultiple;
 AnimationLogo animLogo;
 AnimationTypo animTypo;
-AnimationPyramids animPyramids;
-Animation anim;
+*/
 
 // ------------------------------------------------------
 // Colors
@@ -58,30 +61,29 @@ void setup()
   // Create the Scanimation instance, which will be made of 6 frames
   scanimation = new Scanimation(this, ps, 5);
 
-  // Animation
-  animScanimation = new AnimationScanimation(scanimation);
-  animScanimation.setup();
+  // Animations
+  anims.add( new AnimationLogo(scanimation) );
+  anims.add( new AnimationCeline(scanimation,0) );
+  anims.add( new AnimationCeline(scanimation,1) );
+  anims.add( new AnimationPyramids(scanimation) );
+  anims.add( new AnimationCubes(scanimation) );
+  anims.add( new AnimationSpheres(scanimation) );
+  anims.add( new AnimationBurgers(scanimation) );
+  anims.add( new AnimationMistral(scanimation) );
+  anims.add( new AnimationCypraeaMappa(scanimation) );
+  anims.add( new AnimationTournesol(scanimation) );
+  anims.add( new AnimationMelanie(scanimation) );
+  anims.add( new buddha(scanimation) );
+  anims.add( new AnimationRebecca(scanimation,0) );
+  anims.add( new AnimationRebecca(scanimation,1) );
+  anims.add( new AnimationTourbillon(scanimation) );
+  anims.add( new AnimationWave(scanimation) );
+  anims.add( new AnimationSauron(scanimation) );
 
-  animGrid = new AnimationGrid(scanimation);
-  animGrid.setup();
-
-  animRing = new AnimationRing(scanimation);
-  animRing.setup();
-
-  animRingMultiple = new AnimationRingMultiple(scanimation);
-  animRingMultiple.setup();
+  for (Animation anim : anims) anim.setup();
   
-  animTypo = new AnimationTypo(scanimation);
-  animTypo.setup();
-
-  animLogo = new AnimationLogo(scanimation);
-  animLogo.setup();
-
-  animPyramids = new AnimationPyramids(scanimation);
-  animPyramids.setup();
-
-  anim = animPyramids;
-
+  anim = anims.get(0);
+ 
   // Compose the final frame (this is calling "drawScanimationFrame" for each frame)
   scanimation.composeFinalFrame();
   // Set the animation period in seconds (use 'a' on keyboard)
@@ -123,6 +125,25 @@ void draw()
     fill(0);
     text("frame ["+drawFrameIndex+"]", 5, 12);
   }
+  
+  // Draws infos
+  if (anim != null)
+  {
+    float wCredits = 180, hCredits = 50;
+    float margin = 5;
+    
+    pushStyle();
+    noStroke();
+    fill(0,180);
+    pushMatrix();
+    translate(5,height-hCredits-5);
+    rect(0,0,wCredits,hCredits);
+    fill(255);
+    textFont(font15);
+    text(anim.author + "\n" + anim.name,margin,margin,wCredits-2*margin,hCredits-2*margin);
+    popMatrix();
+    popStyle();
+  }
 }
 
 // ------------------------------------------------------
@@ -140,9 +161,23 @@ void keyPressed()
 {
   if (key == CODED) 
   {
-    if (mode == 3)
+/*    if (mode == 3)
     {
       if (keyCode == RIGHT) drawFrameIndex = (drawFrameIndex+1)%scanimation.nbFrames;
+    }
+*/
+    if (keyCode == RIGHT)
+    {
+      int index = (anims.indexOf(anim)+1)%anims.size();
+      anim = anims.get(index);
+      scanimation.composeFinalFrame();
+    }
+    else if (keyCode == LEFT) 
+    {
+      int index = anims.indexOf(anim)-1;
+      if (index < 0) index = anims.size()-1;
+      anim = anims.get(index);
+      scanimation.composeFinalFrame();
     }
   }
 
