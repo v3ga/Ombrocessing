@@ -8,7 +8,6 @@ Ombrocessing is a workshop led by myself and [Émeline Vivier](https://www.ateli
 https://vimeo.com/267686259
 
 ### Images
-##### Booklets
 ![Ombrocessing](https://github.com/v3ga/v3ga.github.io/blob/master/Images/Ombrocessing/OMBROCESSING-shooting-10.JPG)
 ![Ombrocessing](https://github.com/v3ga/v3ga.github.io/blob/master/Images/Ombrocessing/OMBROCESSING-shooting-12.JPG)
 ![Ombrocessing](https://github.com/v3ga/v3ga.github.io/blob/master/Images/Ombrocessing/OMBROCESSING-shooting-13.JPG)
@@ -22,7 +21,7 @@ It was developed with Processing 3.3.1 (MacOS 10.12.5) with the following librai
 * [Geomerative](http://www.ricardmarxer.com/geomerative/) by Ricard Marxer for handling TTF font loading.
 * [GifAnimation](https://github.com/01010101/GifAnimation) 3.x version by Jérôme Saint-Clair based on original code by Patrick Meister. 
 
-#### During workshop
+##### During workshop
 ![Ombrocessing](processing/Ombrocessing/data/images/ombrocessing-logo-serigraphie.jpg)
 
 
