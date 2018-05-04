@@ -1,3 +1,5 @@
+![Ombrocessing](https://github.com/v3ga/v3ga.github.io/blob/master/Images/Ombrocessing/OMBROCESSING-shooting-2.JPG)
+
 Ombrocessing is a workshop led by myself and [Émeline Vivier](https://www.atelierserrejoint.com/) using [Processing](http://www.processing.org), ombrocinema technique and serigraphy to produce a set of printed frame-by-frame animations booklet.
 
 [www.ombrocessing.org](http://www.ombrocessing.org)
@@ -7,7 +9,6 @@ https://vimeo.com/267686259
 
 ### Images
 ##### Booklets
-![Ombrocessing](https://github.com/v3ga/v3ga.github.io/blob/master/Images/Ombrocessing/OMBROCESSING-shooting-2.JPG)
 ![Ombrocessing](https://github.com/v3ga/v3ga.github.io/blob/master/Images/Ombrocessing/OMBROCESSING-shooting-10.JPG)
 ![Ombrocessing](https://github.com/v3ga/v3ga.github.io/blob/master/Images/Ombrocessing/OMBROCESSING-shooting-12.JPG)
 ![Ombrocessing](https://github.com/v3ga/v3ga.github.io/blob/master/Images/Ombrocessing/OMBROCESSING-shooting-13.JPG)
